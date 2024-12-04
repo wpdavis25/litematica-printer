@@ -41,6 +41,16 @@ public class Printer {
         if (!actionHandler.acceptsActions()) {
             return false;
         }
+        // Disable in inventories
+        if (mc.currentScreen != null) {
+            if (PrinterConfig.MOVE_WHILE_IN_INVENTORY.getBooleanValue()) {
+                if (mc.currentScreen instanceof CraftingScreen || mc.currentScreen instanceof CreativeInventoryScreen) {
+                    return;
+                }
+            } else {
+                return;
+            }
+        }
 
         if (worldSchematic == null) {
             return false;
