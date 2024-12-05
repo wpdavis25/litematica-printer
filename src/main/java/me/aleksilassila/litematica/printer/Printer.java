@@ -41,17 +41,9 @@ public class Printer {
         if (!actionHandler.acceptsActions()) {
             return false;
         }
-        // Disable in inventories
-        if (mc.currentScreen != null) {
-            if (PrinterConfig.MOVE_WHILE_IN_INVENTORY.getBooleanValue()) {
-                if (mc.currentScreen instanceof CraftingScreen || mc.currentScreen instanceof CreativeInventoryScreen) {
-                    return;
-                }
-            } else {
-                return;
-            }
-        }
+       if (PrinterConfig.STOP_ON_MOVEMENT.getBooleanValue() && player.getVelocity().length() > 0.1) return false; // Stop if the player is moving
 
+        
         if (worldSchematic == null) {
             return false;
         }
