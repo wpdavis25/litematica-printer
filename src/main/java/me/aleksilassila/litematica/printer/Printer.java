@@ -18,12 +18,15 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import net.minecraft.client.gui.screen.ingame.CraftingScreen;
+import net.minecraft.client.gui.screen.ingame.CreativeInventoryScreen;
 
 import javax.annotation.Nonnull;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Printer {
+	MinecraftClient mc = MinecraftClient.getInstance();
     public static final Logger logger = LogManager.getLogger(PrinterReference.MOD_ID);
     @Nonnull
     public final ClientPlayerEntity player;
