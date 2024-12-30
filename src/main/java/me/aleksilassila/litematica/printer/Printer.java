@@ -24,6 +24,7 @@ import net.minecraft.client.gui.screen.ingame.CreativeInventoryScreen;
 import javax.annotation.Nonnull;
 import java.util.ArrayList;
 import java.util.List;
+import java.lang.reflect.Method;
 
 public class Printer {
 	MinecraftClient mc = MinecraftClient.getInstance();
