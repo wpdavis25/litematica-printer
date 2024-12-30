@@ -32,6 +32,8 @@ public class Configs {
         list.add(REPLACE_FLUIDS_SOURCE_BLOCKS);
         list.add(STRIP_LOGS);
         list.add(INTERACT_BLOCKS);
+        list.add(MOVE_WHILE_IN_INVENTORY);
+		list.add(STOP_ON_MOVEMENT);
 
         return ImmutableList.copyOf(list);
     }
