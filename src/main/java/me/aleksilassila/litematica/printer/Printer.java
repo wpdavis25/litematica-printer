@@ -41,15 +41,29 @@ public class Printer {
         if (!actionHandler.acceptsActions()) {
             return false;
         }
-       if (PrinterConfig.STOP_ON_MOVEMENT.getBooleanValue() && player.getVelocity().length() > 0.1) return false; // Stop if the player is moving
-
         
-        if (worldSchematic == null) {
-            return false;
-        }
-
-        if (!Configs.PRINT_MODE.getBooleanValue() && !Hotkeys.PRINT.getKeybind().isPressed()) {
-            return false;
+      //makes methods hasmovementinput a.k.a. method_22120 accessible
+		try {
+		Method privatehasMovementInput = ClientPlayerEntity.class.getDeclaredMethod("method_22120");
+		privatehasMovementInput.setAccessible(true);
+		
+			if(Configs.STOP_ON_MOVEMENT.getBooleanValue() && (boolean)privatehasMovementInput.invoke(player))
+				return false; //Stop if the player has movement input
+		} catch (Exception e) {
+			e.printStackTrace(System.out);
+		}
+		if (Configs.STOP_ON_MOVEMENT.getBooleanValue() && player.getVelocity().length() > 0.05) 
+			 return false; // Stop if the player is moving too fast(taken from Icytanks fork of litematica printer)
+		
+		// stops printing if the invetory is open (taken from Icytanks fork of litematica printer)
+        if (mc.currentScreen != null) {
+            if (Configs.MOVE_WHILE_IN_INVENTORY.getBooleanValue()) {
+                if (mc.currentScreen instanceof CraftingScreen || mc.currentScreen instanceof CreativeInventoryScreen) {
+                    return false;
+                }
+            } else {
+                return false;
+            }
         }
 
         PlayerAbilities abilities = player.getAbilities();
