@@ -21,6 +21,7 @@ public class Configs {
     public static final ConfigBoolean STRIP_LOGS = new ConfigBoolean("stripLogs", true).apply(GENERIC_KEY);
     public static final ConfigBoolean INTERACT_BLOCKS = new ConfigBoolean("interactBlocks", true).apply(GENERIC_KEY);
     public static final ConfigBoolean MOVE_WHILE_IN_INVENTORY = new ConfigBoolean("printerMoveWhileInInventory", false, "Allows the player to move while the player inventory is open.");
+    public static final ConfigBoolean STOP_ON_MOVEMENT = new ConfigBoolean("printerStopWhileMoving", false, "Allows the player to stop printing while a movement key is pressed.");
 
     public static ImmutableList<IConfigBase> getConfigList() {
         List<IConfigBase> list = new java.util.ArrayList<>(fi.dy.masa.litematica.config.Configs.Generic.OPTIONS);
